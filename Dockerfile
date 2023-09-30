@@ -25,5 +25,5 @@ WORKDIR /app
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-Dspring.profiles.active=${PROFILE}", "-jar", "app.war"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=${PROFILE}", "-jar", "ecommerce-0.0.1-SNAPSHOT.war"]
 # END run
