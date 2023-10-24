@@ -7,16 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ClienteDTO {
+public class ProdutoDTO {
 	private Long id;
-	private String nome;
-	private String cep;
-	private String logradouro;
-	private String numero;
-	private String complemento;
-	private String bairro;
-	private String municipio;
-	private String uf;
-	private Instant dataCadastro;
-	private boolean ativo;
+	private Sttring nome;
+	private LocalDateTime dataDeCadastro;
+	private boolean ativo;;
 }
