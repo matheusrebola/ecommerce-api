@@ -6,20 +6,20 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class ClienteService {
+public class PedidoService {
 
-	private final ClienteRepository clienteRepository;
+	private final PedidoRepository pedidoRepository;
 
-	public List<Cliente> getAll() {
-		return clienteRepository.findAll();
+	public List<Pedido> getAll() {
+		return pedidoRepository.findAll();
 	}
 
 	public boolean exists(long id) {
-		return clienteRepository.existsById(id);
+		return pedidoRepository.existsById(id);
 	}
 
-	public Cliente findById(long id) {
-		return clienteRepository.findById(id).orElse(null);
+	public Pedido findById(long id) {
+		return pedidoRepository.findById(id).orElse(null);
 	}
 
 }
