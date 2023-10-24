@@ -17,17 +17,17 @@ import com.github.acnaweb.ecommerce.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/clientes")
+@RequestMapping("/pedidos")
 @RequiredArgsConstructor
-public class ClienteController {
-	private final ClienteService clienteService;
+public class PedidoController {
+	private final PedidoService pedidoService;
 	private final ModelMapper modelMapper;
 
 	@GetMapping
-	public ResponseEntity<List<ClienteDTO>> getAll() {
+	public ResponseEntity<List<PedidoDTO>> getAll() {
 
-		// mapear/converter cada Cliente -> ClienteDTO
-		List<ClienteDTO> result = 
+		// mapear/converter cada Pedido -> PedidoDTO
+		List<PedidoDTO> result = 
 				clienteService.getAll()
 				.stream()
 				.map(this::map)
@@ -37,18 +37,18 @@ public class ClienteController {
 	}
 
 	@GetMapping(value = "{id}")
-	public ResponseEntity<ClienteDTO> findById(@PathVariable long id) {
-		if (!clienteService.exists(id)) {
+	public ResponseEntity<PedidoDTO> findById(@PathVariable long id) {
+		if (!pedidoService.exists(id)) {
 			return ResponseEntity.notFound().build();
 		}
 
-		ClienteDTO dto = this.map(clienteService.findById(id));
+		PedidoDTO dto = this.map(pedidoService.findById(id));
 
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 
-	private ClienteDTO map(Cliente cliente) {
-		ClienteDTO dto = modelMapper.map(cliente, ClienteDTO.class);
+	private PedidoDTO map(Pedido pedido) {
+		PedidoDTO dto = modelMapper.map(cliente, PedidoDTO.class);
 		return dto;
 	}
 }
