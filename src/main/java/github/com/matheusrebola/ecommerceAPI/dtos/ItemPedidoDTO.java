@@ -1,7 +1,9 @@
-package com.github.matheusrebola.ecommerceAPI.dtos;
+package github.com.matheusrebola.ecommerceAPI.dtos;
 
-import java.time.Instant;
+import java.math.BigDecimal;
 
+import github.com.matheusrebola.ecommerceAPI.model.Pedido;
+import github.com.matheusrebola.ecommerceAPI.model.Produto;
 import lombok.Getter;
 import lombok.Setter;
 

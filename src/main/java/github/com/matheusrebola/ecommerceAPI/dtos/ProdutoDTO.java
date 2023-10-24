@@ -1,6 +1,6 @@
-package com.github.matheusrebola.ecommerceAPI.dtos;
+package github.com.matheusrebola.ecommerceAPI.dtos;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class ProdutoDTO {
 	private Long id;
-	private Sttring nome;
+	private String nome;
 	private LocalDateTime dataDeCadastro;
-	private boolean ativo;;
+	private boolean ativo;
 }

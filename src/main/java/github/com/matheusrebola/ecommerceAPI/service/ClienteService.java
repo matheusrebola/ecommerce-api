@@ -1,8 +1,12 @@
-package com.matheusrebola.service;
+package github.com.matheusrebola.ecommerceAPI.service;
+
+
+import github.com.matheusrebola.ecommerceAPI.model.Cliente;
+import github.com.matheusrebola.ecommerceAPI.repository.ClienteRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import org.springframework.stereotype.Service;
-import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor

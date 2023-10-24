@@ -1,9 +1,12 @@
-package com.github.matheusrebola.ecommerceAPI.dtos;
+package github.com.matheusrebola.ecommerceAPI.dtos;
 
-import java.time.Instant;
-
+import github.com.matheusrebola.ecommerceAPI.model.Cliente;
+import github.com.matheusrebola.ecommerceAPI.model.SituacaoPedido;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter

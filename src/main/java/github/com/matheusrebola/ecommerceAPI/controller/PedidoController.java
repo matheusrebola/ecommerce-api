@@ -1,4 +1,4 @@
-package com.matheusrebola.controller;
+package github.com.matheusrebola.ecommerceAPI.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.acnaweb.ecommerce.model.Cliente;
-import com.github.acnaweb.ecommerce.service.ClienteService;
+import github.com.matheusrebola.ecommerceAPI.service.PedidoService;
+import github.com.matheusrebola.ecommerceAPI.dtos.PedidoDTO;
+import github.com.matheusrebola.ecommerceAPI.model.Pedido;
+
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,15 +22,15 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/pedidos")
 @RequiredArgsConstructor
 public class PedidoController {
-	private final PedidoService pedidoService;
-	private final ModelMapper modelMapper;
+	private PedidoService pedidoService;
+	private ModelMapper modelMapper;
 
 	@GetMapping
 	public ResponseEntity<List<PedidoDTO>> getAll() {
 
 		// mapear/converter cada Pedido -> PedidoDTO
 		List<PedidoDTO> result = 
-				clienteService.getAll()
+				pedidoService.getAll()
 				.stream()
 				.map(this::map)
 				.collect(Collectors.toList());
@@ -48,7 +50,7 @@ public class PedidoController {
 	}
 
 	private PedidoDTO map(Pedido pedido) {
-		PedidoDTO dto = modelMapper.map(cliente, PedidoDTO.class);
+		PedidoDTO dto = modelMapper.map(pedido, PedidoDTO.class);
 		return dto;
 	}
 }

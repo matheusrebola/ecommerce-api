@@ -1,8 +1,11 @@
-package com.matheusrebola.controller;
+package github.com.matheusrebola.ecommerceAPI.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import github.com.matheusrebola.ecommerceAPI.dtos.ItemPedidoDTO;
+import github.com.matheusrebola.ecommerceAPI.model.ItemPedido;
+import github.com.matheusrebola.ecommerceAPI.service.ItemPedidoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +27,7 @@ public class ItemPedidoController {
 	public ResponseEntity<List<ItemPedidoDTO>> getAll() {
 
 		// mapear/converter cada ItemPedido -> ItemPedidoDTO
-		List<ItemPedidoDTO> result = 
+		List<ItemPedidoDTO> result =
 				itemPedidoService.getAll()
 				.stream()
 				.map(this::map)

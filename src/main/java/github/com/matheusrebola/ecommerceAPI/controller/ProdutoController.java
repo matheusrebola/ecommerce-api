@@ -1,8 +1,11 @@
-package com.matheusrebola.controller;
+package github.com.matheusrebola.ecommerceAPI.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import github.com.matheusrebola.ecommerceAPI.dtos.ProdutoDTO;
+import github.com.matheusrebola.ecommerceAPI.model.Produto;
+import github.com.matheusrebola.ecommerceAPI.service.ProdutoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.acnaweb.ecommerce.model.Cliente;
-import com.github.acnaweb.ecommerce.service.ClienteService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/produtos")
 @RequiredArgsConstructor
 public class ProdutoController {
-	private final ProdutoService clienteService;
+	private final ProdutoService produtoService;
 	private final ModelMapper modelMapper;
 
 	@GetMapping

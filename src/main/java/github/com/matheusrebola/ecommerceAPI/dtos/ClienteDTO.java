@@ -1,4 +1,4 @@
-package com.github.matheusrebola.ecommerceAPI.dtos;
+package github.com.matheusrebola.ecommerceAPI.dtos;
 
 import java.time.Instant;
 

@@ -1,8 +1,11 @@
-package com.matheusrebola.controller;
+package github.com.matheusrebola.ecommerceAPI.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import github.com.matheusrebola.ecommerceAPI.dtos.ClienteDTO;
+import github.com.matheusrebola.ecommerceAPI.model.Cliente;
+import github.com.matheusrebola.ecommerceAPI.service.ClienteService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.github.acnaweb.ecommerce.model.Cliente;
-import com.github.acnaweb.ecommerce.service.ClienteService;
 
 import lombok.RequiredArgsConstructor;
 

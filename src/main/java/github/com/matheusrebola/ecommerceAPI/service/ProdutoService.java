@@ -1,6 +1,9 @@
-package com.matheusrebola.service;
+package github.com.matheusrebola.ecommerceAPI.service;
 
 import java.util.List;
+
+import github.com.matheusrebola.ecommerceAPI.model.Produto;
+import github.com.matheusrebola.ecommerceAPI.repository.ProdutoRepository;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
@@ -19,7 +22,7 @@ public class ProdutoService {
 	}
 
 	public Produto findById(long id) {
-		return rodutoRepository.findById(id).orElse(null);
+		return produtoRepository.findById(id).orElse(null);
 	}
 
 }
