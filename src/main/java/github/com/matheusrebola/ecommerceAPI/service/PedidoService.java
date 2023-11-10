@@ -17,12 +17,9 @@ public class PedidoService {
 		return pedidoRepository.findAll();
 	}
 
-	public boolean exists(long id) {
-		return pedidoRepository.existsById(id);
-	}
+	public List<Pedido> findByCliente(long id) {
 
-	public Pedido findById(long id) {
-		return pedidoRepository.findById(id).orElse(null);
+		return pedidoRepository.findByCliente(id);
 	}
 
 }
