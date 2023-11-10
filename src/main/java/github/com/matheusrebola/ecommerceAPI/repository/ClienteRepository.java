@@ -6,4 +6,5 @@ import github.com.matheusrebola.ecommerceAPI.model.Cliente;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+	<T> List<T> findByUf(String uf, Class<T> type);
 }
