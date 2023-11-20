@@ -1,4 +1,4 @@
-package com.github.matheusrebola.ecommerceAPI.model;
+package github.com.matheusrebola.ecommerceAPI.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

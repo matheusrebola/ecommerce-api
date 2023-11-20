@@ -1,22 +1,15 @@
-package com.github.matheusrebola.ecommerceAPI.dtos;
+package github.com.matheusrebola.ecommerceAPI.dtos;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ClienteDTO {
+public class ProdutoDTO {
 	private Long id;
 	private String nome;
-	private String cep;
-	private String logradouro;
-	private String numero;
-	private String complemento;
-	private String bairro;
-	private String municipio;
-	private String uf;
-	private Instant dataCadastro;
+	private LocalDateTime dataDeCadastro;
 	private boolean ativo;
 }

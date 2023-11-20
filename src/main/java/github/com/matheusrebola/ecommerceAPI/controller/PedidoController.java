@@ -1,4 +1,4 @@
-package com.matheusrebola.controller;
+package github.com.matheusrebola.ecommerceAPI.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,44 +11,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.acnaweb.ecommerce.model.Cliente;
-import com.github.acnaweb.ecommerce.service.ClienteService;
+import github.com.matheusrebola.ecommerceAPI.service.PedidoService;
+import github.com.matheusrebola.ecommerceAPI.dtos.PedidoDTO;
+import github.com.matheusrebola.ecommerceAPI.model.Pedido;
+
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/clientes")
+@RequestMapping("/pedidos")
 @RequiredArgsConstructor
-public class ClienteController {
-	private final ClienteService clienteService;
-	private final ModelMapper modelMapper;
+public class PedidoController {
+	private final PedidoService pedidoService;
+	private final PedidoMapper pedidoMapper;
 
 	@GetMapping
-	public ResponseEntity<List<ClienteDTO>> getAll() {
+	public ResponseEntity<List<PedidoDTO>> getAll() {
 
-		// mapear/converter cada Cliente -> ClienteDTO
-		List<ClienteDTO> result = 
-				clienteService.getAll()
+		List<PedidoDTO> result =
+				pedidoService.getAll()
 				.stream()
-				.map(this::map)
+				.map(pedidoMapper::map)
 				.collect(Collectors.toList());
 
 		return new ResponseEntity<>(result, HttpStatus.OK);
-	}
-
-	@GetMapping(value = "{id}")
-	public ResponseEntity<ClienteDTO> findById(@PathVariable long id) {
-		if (!clienteService.exists(id)) {
-			return ResponseEntity.notFound().build();
-		}
-
-		ClienteDTO dto = this.map(clienteService.findById(id));
-
-		return new ResponseEntity<>(dto, HttpStatus.OK);
-	}
-
-	private ClienteDTO map(Cliente cliente) {
-		ClienteDTO dto = modelMapper.map(cliente, ClienteDTO.class);
-		return dto;
 	}
 }

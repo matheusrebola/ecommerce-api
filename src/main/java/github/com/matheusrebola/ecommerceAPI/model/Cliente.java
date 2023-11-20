@@ -1,8 +1,10 @@
-package com.github.matheusrebola.ecommerceAPI.model;
+package github.com.matheusrebola.ecommerceAPI.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -42,8 +44,13 @@ public class Cliente {
     @Column(length = 2)
     private String uf;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name="dt_cadastro")
+    @CreationTimestamp
     private Instant dataCadastro;
+    
+    @Column(name="dt_modificacao")
+    @UpdateTimestamp
+    private Instant dataAtualizacao;
 
     @Column(nullable = false)
     private boolean ativo;
