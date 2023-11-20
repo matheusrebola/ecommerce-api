@@ -1,2 +1,4 @@
-package github.com.matheusrebola.ecommerceAPI.mapper;public class ProdutoMapper {
+package github.com.matheusrebola.ecommerceAPI.mapper;
+
+public class ProdutoMapper {
 }
