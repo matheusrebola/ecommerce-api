@@ -23,7 +23,11 @@ public class ClienteService {
 	}
 
 	public Cliente findById(long id) {
+
 		return clienteRepository.findById(id).orElse(null);
 	}
 
+	public Cliente save(Cliente cliente) {
+		return clienteRepository.save(cliente);
+	}
 }

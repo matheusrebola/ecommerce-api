@@ -22,7 +22,11 @@ public class ProdutoService {
 	}
 
 	public Produto findById(long id) {
+
 		return produtoRepository.findById(id).orElse(null);
 	}
 
+	public Produto save(Produto produto) {
+		return produtoRepository.save(produto);
+	}
 }

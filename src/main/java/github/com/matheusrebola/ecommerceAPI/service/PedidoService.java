@@ -22,7 +22,11 @@ public class PedidoService {
 	}
 
 	public Pedido findById(long id) {
+
 		return pedidoRepository.findById(id).orElse(null);
 	}
 
+	public Pedido save(Pedido pedido) {
+		return pedidoRepository.save(pedido);
+	}
 }
