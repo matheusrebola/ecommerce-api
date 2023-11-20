@@ -3,7 +3,14 @@ package github.com.matheusrebola.ecommerceAPI.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
+import github.com.matheusrebola.ecommerceAPI.dtos.ClienteCreateDTO;
+import github.com.matheusrebola.ecommerceAPI.dtos.ClienteDTO;
+import github.com.matheusrebola.ecommerceAPI.dtos.ProdutoCreateDTO;
 import github.com.matheusrebola.ecommerceAPI.dtos.ProdutoDTO;
+import github.com.matheusrebola.ecommerceAPI.mapper.ProdutoMapper;
+import github.com.matheusrebola.ecommerceAPI.model.Cliente;
 import github.com.matheusrebola.ecommerceAPI.model.Produto;
 import github.com.matheusrebola.ecommerceAPI.service.ProdutoService;
 import org.modelmapper.ModelMapper;
@@ -11,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,13 +30,12 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/produtos")
 @RequiredArgsConstructor
 public class ProdutoController {
-	private ProdutoService produtoService;
-	private ModelMapper modelMapper;
+	private final ProdutoService produtoService;
+	private final ModelMapper modelMapper;
+	private final ProdutoMapper produtoMapper;
 
 	@GetMapping
 	public ResponseEntity<List<ProdutoDTO>> getAll() {
-
-		// mapear/converter cada produtoDTO -> ProdutoDTO
 		List<ProdutoDTO> result = 
 				produtoService.getAll()
 				.stream()
@@ -51,5 +59,15 @@ public class ProdutoController {
 	private ProdutoDTO map(Produto produto) {
 		ProdutoDTO dto = modelMapper.map(produto, ProdutoDTO.class);
 		return dto;
+	}
+	@PostMapping
+	public ResponseEntity<ProdutoDTO> create(@Valid @RequestBody ProdutoCreateDTO requestDto) {
+
+		Produto produto = ProdutoMapper.map(requestDto);
+
+		Produto produtoSaved = produtoService.save(produto);
+
+		ProdutoDTO responseDto = produtoMapper.map(produtoSaved);
+		return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
 	}
 }
