@@ -20,8 +20,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/itenspedidos")
 @RequiredArgsConstructor
 public class ItemPedidoController {
-	private final ItemPedidoService itemPedidoService;
-	private final ModelMapper modelMapper;
+	private ItemPedidoService itemPedidoService;
+	private ModelMapper modelMapper;
 
 	@GetMapping
 	public ResponseEntity<List<ItemPedidoDTO>> getAll() {

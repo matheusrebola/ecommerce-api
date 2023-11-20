@@ -22,8 +22,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/pedidos")
 @RequiredArgsConstructor
 public class PedidoController {
-	private final PedidoService pedidoService;
-	private final ModelMapper modelMapper;
+	private PedidoService pedidoService;
+	private ModelMapper modelMapper;
 
 	@GetMapping
 	public ResponseEntity<List<PedidoDTO>> getAll() {

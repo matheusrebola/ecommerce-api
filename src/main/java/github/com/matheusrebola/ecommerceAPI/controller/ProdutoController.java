@@ -21,8 +21,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/produtos")
 @RequiredArgsConstructor
 public class ProdutoController {
-	private final ProdutoService produtoService;
-	private final ModelMapper modelMapper;
+	private ProdutoService produtoService;
+	private ModelMapper modelMapper;
 
 	@GetMapping
 	public ResponseEntity<List<ProdutoDTO>> getAll() {
