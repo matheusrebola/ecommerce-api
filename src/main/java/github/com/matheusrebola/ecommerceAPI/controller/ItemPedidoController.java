@@ -20,35 +20,63 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/itenspedidos")
 @RequiredArgsConstructor
 public class ItemPedidoController {
+<<<<<<< HEAD
 	private ItemPedidoService itemPedidoService;
 	private ModelMapper modelMapper;
+=======
+	private final ItemPedidoService itemPedidoService;
+	private final ModelMapper itemPedidoMapper;
+>>>>>>> 0fcdbe09f96d99ed2996683265b856409e4da340
 
-	@GetMapping
-	public ResponseEntity<List<ItemPedidoDTO>> getAll() {
+    @GetMapping
+    public ResponseEntity<List<ItemPedidoDTO>> getAll() {
 
-		// mapear/converter cada ItemPedido -> ItemPedidoDTO
-		List<ItemPedidoDTO> result =
-				itemPedidoService.getAll()
-				.stream()
-				.map(this::map)
-				.collect(Collectors.toList());
+        // mapear/converter cada Cliente -> ClienteDTO
+        List<ClienteDTO> result = 
+        		itemPedidoService
+        		.getAll()
+        		.stream()
+        		.map(clienteMapper::map)
+        		.collect(Collectors.toList());
 
-		return new ResponseEntity<>(result, HttpStatus.OK);
-	}
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 
-	@GetMapping(value = "{id}")
-	public ResponseEntity<ItemPedidoDTO> findById(@PathVariable long id) {
-		if (!itemPedidoService.exists(id)) {
-			return ResponseEntity.notFound().build();
-		}
+    @GetMapping("{id}")
+    public ResponseEntity<ItemPedidoDTO> findById(@PathVariable long id) {
+        if (!itemPedidoService.exists(id)) {
+            return ResponseEntity.notFound().build();
+        }
 
-		ItemPedidoDTO dto = this.map(itemPedidoService.findById(id));
+        ItemPedidoDTO dto = itemPedidoMapper.map(itemPedidoService.findById(id));
 
-		return new ResponseEntity<>(dto, HttpStatus.OK);
-	}
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
 
-	private ItemPedidoDTO map(ItemPedido itemPedido) {
-		ItemPedidoDTO dto = modelMapper.map(itemPedido, ItemPedidoDTO.class);
-		return dto;
-	}
+    @GetMapping("{id}/pedidos")
+    public ResponseEntity<List<ItemPedidoDTO>> findPedidosByClienteId(@PathVariable long id) {
+        if (!itemPedidoService.exists(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        List<ItemPedidoDTO> dto = 
+        		itemPedidoService
+        		.findByCliente(id)
+        		.stream()
+        		.map(pedidoMapper::map)
+        		.collect(Collectors.toList());
+
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<ItemPedidoDTO> create(@Valid @RequestBody ItemPedidoCreateDTO requestDto) {
+
+        ItemPedido itemPedido = itemPedidoMapper.map(requestDto);
+
+        ItemPedido itemPedidoSaved = itemPedidoService.save(itemPedido);
+
+        ItemPedidoDTO responseDto = itemPedidoMapper.map(itemPedidoSaved);
+        return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+    }
 }

@@ -22,35 +22,23 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/pedidos")
 @RequiredArgsConstructor
 public class PedidoController {
+<<<<<<< HEAD
 	private PedidoService pedidoService;
 	private ModelMapper modelMapper;
+=======
+	private final PedidoService pedidoService;
+	private final PedidoMapper pedidoMapper;
+>>>>>>> 0fcdbe09f96d99ed2996683265b856409e4da340
 
 	@GetMapping
 	public ResponseEntity<List<PedidoDTO>> getAll() {
 
-		// mapear/converter cada Pedido -> PedidoDTO
-		List<PedidoDTO> result = 
+		List<PedidoDTO> result =
 				pedidoService.getAll()
 				.stream()
-				.map(this::map)
+				.map(pedidoMapper::map)
 				.collect(Collectors.toList());
 
 		return new ResponseEntity<>(result, HttpStatus.OK);
-	}
-
-	@GetMapping(value = "{id}")
-	public ResponseEntity<PedidoDTO> findById(@PathVariable long id) {
-		if (!pedidoService.exists(id)) {
-			return ResponseEntity.notFound().build();
-		}
-
-		PedidoDTO dto = this.map(pedidoService.findById(id));
-
-		return new ResponseEntity<>(dto, HttpStatus.OK);
-	}
-
-	private PedidoDTO map(Pedido pedido) {
-		PedidoDTO dto = modelMapper.map(pedido, PedidoDTO.class);
-		return dto;
 	}
 }

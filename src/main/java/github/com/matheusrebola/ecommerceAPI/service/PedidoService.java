@@ -20,13 +20,15 @@ public class PedidoService {
 		return pedidoRepository.findAll();
 	}
 
-	public boolean exists(long id) {
-		return pedidoRepository.existsById(id);
-	}
+	public List<Pedido> findByCliente(long id) {
 
+<<<<<<< HEAD
 	public Pedido findById(long id) {
 
 		return pedidoRepository.findById(id).orElse(null);
+=======
+		return pedidoRepository.findByCliente(id);
+>>>>>>> 0fcdbe09f96d99ed2996683265b856409e4da340
 	}
 
 	public Pedido save(Pedido pedido) {
