@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 public class PedidoDTO {
 	private Long id;
-	private Cliente cliente;
+	private Long cliente_id;
 	private LocalDateTime dataDoPedido;
 	private LocalDateTime dataEntrega;
 	private BigDecimal valorTotalDoPedido;
