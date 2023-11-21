@@ -23,7 +23,6 @@ public class ItemPedidoService {
 	}
 
 	public ItemPedido findById(long id) {
-
 		return itemPedidoRepository.findById(id).orElse(null);
 	}
 

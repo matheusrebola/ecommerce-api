@@ -1,6 +1,5 @@
 package github.com.matheusrebola.ecommerceAPI.dtos;
 
-import github.com.matheusrebola.ecommerceAPI.model.Cliente;
 import github.com.matheusrebola.ecommerceAPI.model.SituacaoPedido;
 import lombok.Getter;
 import lombok.Setter;

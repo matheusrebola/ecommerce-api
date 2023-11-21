@@ -30,8 +30,4 @@ public class ClienteService {
 	public Cliente save(Cliente cliente) {
 		return clienteRepository.save(cliente);
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> 0fcdbe09f96d99ed2996683265b856409e4da340
 }
